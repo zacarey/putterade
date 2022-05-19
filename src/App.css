@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -15,7 +16,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 5vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +36,35 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+
+
+.flex-container {
+  display: flex;
+}
+
+.choose-circle-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.shot-row-container  {
+  display: flex;
+  justify-content: center;
+}
+
+.shot {
+  display: flex;
+  justify-content: space-around;
+}
+
+.row-text {
+  display: flex;
+  align-items: center;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
 }
