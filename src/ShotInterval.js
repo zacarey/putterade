@@ -1,11 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button, Badge } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function ShotInterval(props) {
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState(props.value.shots);
+
+  useEffect(() => {
+    setHistory(props.value.shots);
+  }, [props.value.shots]);
 
   const addMake = () => {
     setHistory((oldArray) => [...oldArray, true]);
@@ -20,8 +24,9 @@ function ShotInterval(props) {
   };
 
   const handleChange = (e) => {
-    //
+    this.props.value({ shots: history });
   };
+
   const distance = props.value.distance;
   const unit = props.value.unit;
 

@@ -7,13 +7,13 @@ import ShotInterval from "./ShotInterval";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
 function emptyStats() {
+  console.log("running empty stats");
   const stats = [];
   for (var i = 0; i < 10; i++) {
     stats.push({
       distance: (i + 1) * 2,
       unit: "m",
-      make: 0,
-      miss: 0,
+      shots: [],
     });
   }
   return stats;
