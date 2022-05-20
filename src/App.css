@@ -47,6 +47,12 @@
 .choose-circle-container {
   display: flex;
   justify-content: flex-start;
+  margin: 1em;
+}
+
+.choose-circle-item {
+  display: flex;
+  justify-content: space-around;
 }
 
 .shot-row-container  {
