@@ -1,78 +1,95 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import React, { useState } from "react";
-import { ButtonGroup, Card, Button, Badge } from "react-bootstrap";
-import ChooseCircle from "./ChooseCircle";
-import ShotInterval from "./ShotInterval";
+import { ButtonGroup, Card, Button, Badge, Offcanvas } from "react-bootstrap";
+import Putterade from "./Putterade";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import { ReactDOM } from "react";
 
-function emptyStats() {
-  console.log("running empty stats");
-  const stats = [];
+function StatData() {
+  const intervalDistance = 2;
+  const intervalUnit = "m";
+  let totalMade = 0;
+  let totalMissed = 0;
+  let numberOfSessions = 0;
+  let shotInterval = Array(10).fill({});
+  const rows = [];
+
   for (var i = 0; i < 10; i++) {
-    stats.push({
-      distance: (i + 1) * 2,
-      unit: "m",
-      shots: [],
-    });
-  }
-  return stats;
-}
+    const distanceKey = (i + 1) * intervalDistance + intervalUnit;
+    const data = JSON.parse(localStorage.getItem(distanceKey));
 
-class Putterade extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      circle: "c1",
-      intervalDistance: 2,
-      unitMeasurement: "m",
-      stats: emptyStats(),
-    };
-  }
+    shotInterval[i].distance = distanceKey;
+    shotInterval[i].shotsMade = 0;
+    shotInterval[i].shotsMissed = 0;
 
-  renderAllIntervals() {
-    const startingInterval = this.state.circle === "c2" ? 5 : 0;
-    const offset = this.state.circle === "c1" ? 5 : 0;
+    for (var key in data) {
+      numberOfSessions++;
 
-    const rows = [];
-    for (var i = startingInterval; i < 10 - offset; i++) {
-      rows.push(
-        <ShotInterval
-          key={i}
-          value={this.state.stats[i]}
-          onChange={this.handleShotIntervalChange}
-        ></ShotInterval>
-      );
+      totalMade += data[key].shotsMade ?? 0;
+      totalMissed += data[key].shotsMissed ?? 0;
+
+      shotInterval[i].shotsMade += data[key].shotsMade;
+      shotInterval[i].shotsMissed += data[key].shotsMissed;
     }
-    return rows;
-  }
-
-  handleShotIntervalChange(i) {
-    console.log(i);
-  }
-
-  handleCircleChange(i) {
-    this.setState({
-      circle: i,
-    });
-  }
-
-  render() {
-    return (
-      <div>
-        <ChooseCircle
-          onChange={(val) => this.handleCircleChange(val.target.value)}
-        ></ChooseCircle>
-        {this.renderAllIntervals()}
-      </div>
+    rows.push(
+      <p key={i}>
+        {distanceKey}:{" "}
+        {shotInterval[i].shotsMade +
+          "/" +
+          (shotInterval[i].shotsMade + shotInterval[i].shotsMissed)}
+      </p>
     );
   }
+
+  const statTotal = totalMade + "/" + (totalMade + totalMissed);
+
+  return (
+    <div>
+      <p>Total Shots: {statTotal}</p>
+      <p>Total Sessions: {numberOfSessions}</p>
+      <p>Longest shot streak: x</p>
+      <p>Longest day streak: x</p>
+      <p>Shots</p>
+      {rows}
+    </div>
+  );
+}
+
+function StatTrackerOffcanvas({ name, ...props }) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  return (
+    <>
+      <Button variant="warning" onClick={handleShow} className="me-2">
+        <i className="bi bi-bar-chart-steps"></i>
+      </Button>
+      <Offcanvas show={show} onHide={handleClose} {...props}>
+        <Offcanvas.Header closeButton>
+          <Offcanvas.Title>Stats</Offcanvas.Title>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+          <StatData />
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
+  );
 }
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">Putterade</header>
+    <div className="Site">
+      <header className="App-header">
+        <div className="app-header-container">
+          <span className="app-header-text">Putterade</span>
+          <div className="app-header-right">
+            <StatTrackerOffcanvas key="1" placement="end" name="end" />
+          </div>
+        </div>
+      </header>
       <Putterade></Putterade>
       <footer>Putterade 2022</footer>
     </div>
