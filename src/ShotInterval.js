@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import React, { useState } from "react";
 import { Card, Button, Badge } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -102,12 +101,14 @@ function ShotInterval(props) {
         <Badge pill bg="primary" className="row-text">
           <span>{distance + unit}</span>
         </Badge>
-        <Button variant="outline-success" onClick={addMake}>
-          <i className="bi bi-plus-circle-fill"></i>
-        </Button>
-        <Button variant="outline-danger" onClick={addMiss}>
-          <i className="bi bi-dash-circle-fill"></i>
-        </Button>
+        <div>
+          <Button variant="none" onClick={addMake}>
+            <i className="btn-icon-add bi bi-plus-circle-fill"></i>
+          </Button>
+          <Button variant="none" onClick={addMiss}>
+            <i className="btn-icon-minus bi bi-dash-circle-fill"></i>
+          </Button>
+        </div>
       </Card.Body>
     </Card>
   );

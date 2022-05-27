@@ -115,3 +115,13 @@ footer {
   background-color: #DC7726;
 }
 
+
+.btn-icon-add {
+  color: green;
+  /* font size ??? */
+}
+
+.btn-icon-minus {
+  color: red;
+}
+
