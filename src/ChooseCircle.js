@@ -27,7 +27,7 @@ function ChooseCircle(props) {
             name="radio"
             style={{
               backgroundColor:
-                radioValue === radio.value ? "#DC7726" : "#57896A",
+                radioValue === radio.value ? "#57896A" : "#DC7726",
             }}
             value={radio.value}
             checked={radioValue === radio.value}
