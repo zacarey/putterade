@@ -101,14 +101,12 @@ function ShotInterval(props) {
         <Badge pill bg="primary" className="row-text">
           <span>{distance + unit}</span>
         </Badge>
-        <div>
-          <Button variant="none" onClick={addMake}>
-            <i className="btn-icon-add bi bi-plus-circle-fill"></i>
-          </Button>
-          <Button variant="none" onClick={addMiss}>
-            <i className="btn-icon-minus bi bi-dash-circle-fill"></i>
-          </Button>
-        </div>
+        <Button variant="outline-success" onClick={addMake}>
+          <i className="btn-icon-add bi bi-plus-circle-fill"></i>
+        </Button>
+        <Button variant="outline-danger" onClick={addMiss}>
+          <i className="btn-icon-minus bi bi-dash-circle-fill"></i>
+        </Button>
       </Card.Body>
     </Card>
   );
