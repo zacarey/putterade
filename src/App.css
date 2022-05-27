@@ -69,10 +69,6 @@ footer {
   margin: .8em;
 }
 
-.choose-circle-item {
-  display: flex;
-  justify-content: space-around;
-}
 
 .shot-row-container  {
   display: flex;
@@ -93,3 +89,29 @@ footer {
   outline: none;
   box-shadow: none;
 }
+
+.c-button-checked {
+  background-color: #000000;
+}
+
+.c1-button {
+  box-shadow: none !important;
+  background-color: #DC7726;
+  outline: none !important;
+  outline-offset: none !important;
+}
+
+.c2-button {
+  outline: none !important;
+  outline-offset: none !important;
+  box-shadow: none !important;
+  background-color: #DC7726;
+}
+
+.both-button {
+  outline: none !important;
+  outline-offset: none !important;
+  box-shadow: none !important;
+  background-color: #DC7726;
+}
+
