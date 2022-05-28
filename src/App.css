@@ -34,11 +34,10 @@ html, body {
 .app-header-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  margin: .5em;
 }
 
-.app-header-text {
-  padding: .8em;
-}
 
 .app-header-right {
   display: flex;
@@ -48,6 +47,11 @@ html, body {
 
 .App-link {
   color: #61dafb;
+}
+
+.app-header-item {
+  display: flex;
+  align-items: center;
 }
 
 footer {
@@ -66,7 +70,7 @@ footer {
 .choose-circle-container {
   display: flex;
   justify-content: flex-start;
-  margin: .8em;
+  margin: .5em;
 }
 
 

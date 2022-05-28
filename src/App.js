@@ -64,9 +64,11 @@ function StatTrackerOffcanvas({ name, ...props }) {
 
   return (
     <>
-      <Button variant="warning" onClick={handleShow} className="me-2">
-        <i className="bi bi-bar-chart-steps"></i>
-      </Button>
+      <div className="app-header-item">
+        <Button variant="warning" onClick={handleShow} c>
+          <i className="bi bi-bar-chart-steps"></i>
+        </Button>
+      </div>
       <Offcanvas show={show} onHide={handleClose} {...props}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>Stats</Offcanvas.Title>
@@ -84,7 +86,7 @@ function App() {
     <div className="Site">
       <header className="App-header">
         <div className="app-header-container">
-          <span className="app-header-text">Putterade</span>
+          <span>Putterade</span>
           <div className="app-header-right">
             <StatTrackerOffcanvas key="1" placement="end" name="end" />
           </div>
