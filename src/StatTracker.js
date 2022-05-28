@@ -1,10 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import React, { useState } from "react";
-import { ButtonGroup, Card, Button, Badge, Offcanvas } from "react-bootstrap";
-import Putterade from "./Putterade";
+import { Button, Offcanvas } from "react-bootstrap";
 import "bootstrap-icons/font/bootstrap-icons.css";
-import { ReactDOM } from "react";
 
 function getShootingPercentageColorGrade(i) {
   return i > 90 ? "purple" : i > 80 ? "green" : i > 70 ? "orange" : "red";
@@ -79,7 +77,7 @@ function StatTracker({ name, ...props }) {
   return (
     <>
       <div className="app-header-item">
-        <Button variant="warning" onClick={handleShow} c>
+        <Button variant="warning" onClick={handleShow}>
           <i className="bi bi-bar-chart-steps"></i>
         </Button>
       </div>
