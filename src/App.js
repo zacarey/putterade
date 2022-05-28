@@ -36,11 +36,11 @@ function StatData() {
       shotInterval[i].shotsMade += data[key].shotsMade;
       shotInterval[i].shotsMissed += data[key].shotsMissed;
     }
-    const shootingPercentage =
-      (
-        shotInterval[i].shotsMade /
-        (shotInterval[i].shotsMade + shotInterval[i].shotsMissed)
-      ).toFixed(2) * 100;
+    const shootingPercentage = (
+      (shotInterval[i].shotsMade /
+        (shotInterval[i].shotsMade + shotInterval[i].shotsMissed)) *
+      100
+    ).toFixed(2);
     rows.push(
       <div key={i} className="stat-container">
         <p>
