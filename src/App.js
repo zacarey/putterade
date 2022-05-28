@@ -6,6 +6,10 @@ import Putterade from "./Putterade";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { ReactDOM } from "react";
 
+function getShootingPercentageColorGrade(i) {
+  return i > 90 ? "purple" : i > 80 ? "green" : i > 70 ? "orange" : "red";
+}
+
 function StatData() {
   const intervalDistance = 2;
   const intervalUnit = "m";
@@ -32,13 +36,25 @@ function StatData() {
       shotInterval[i].shotsMade += data[key].shotsMade;
       shotInterval[i].shotsMissed += data[key].shotsMissed;
     }
+    const shootingPercentage =
+      (
+        shotInterval[i].shotsMade /
+        (shotInterval[i].shotsMade + shotInterval[i].shotsMissed)
+      ).toFixed(2) * 100;
     rows.push(
-      <p key={i}>
-        {distanceKey}:{" "}
-        {shotInterval[i].shotsMade +
-          "/" +
-          (shotInterval[i].shotsMade + shotInterval[i].shotsMissed)}
-      </p>
+      <div key={i} className="stat-container">
+        <p>
+          {distanceKey}:{" "}
+          {shotInterval[i].shotsMade +
+            "/" +
+            (shotInterval[i].shotsMade + shotInterval[i].shotsMissed)}{" "}
+        </p>
+        <b
+          style={{ color: getShootingPercentageColorGrade(shootingPercentage) }}
+        >
+          {shootingPercentage >= 0 ? shootingPercentage + "%" : ""}
+        </b>
+      </div>
     );
   }
 
@@ -48,9 +64,7 @@ function StatData() {
     <div>
       <p>Total Shots: {statTotal}</p>
       <p>Total Sessions: {numberOfSessions}</p>
-      <p>Longest shot streak: x</p>
-      <p>Longest day streak: x</p>
-      <p>Shots</p>
+      <hr />
       {rows}
     </div>
   );

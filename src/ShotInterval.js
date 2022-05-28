@@ -26,39 +26,6 @@ function setLocalStorage(distance, unit, shots, sessionId) {
   prevStorage[sessionId] = latestStats;
 
   localStorage.setItem(distanceKey, JSON.stringify(prevStorage));
-  setStreakTracker(sessionId, shots);
-}
-
-function setStreakTracker(sessionId, currentShots) {
-  return;
-  let prev = JSON.parse(localStorage.getItem("putt-streak"));
-  if (!prev) prev = { shots: [], carryOver: 0 };
-
-  if (prev.sessionId !== sessionId) {
-    prev.carryOver += prev.shots.length ?? 0;
-    prev.shots = [];
-  }
-
-  prev.shots = currentShots;
-
-  // logic
-  const i = prev.shots.length;
-  let streak = 0;
-  while (i > 0) {
-    if (!!prev.shots[i]) streak++;
-    else continue;
-    i--;
-  }
-  if (streak === prev.shots.length) streak += prev.carryOver;
-
-  const currentStreak = prev.carryOver + prev.shots.filter((i) => !!i).length;
-  if (prev.longestStreak < currentStreak) {
-    prev.longestStreak = currentStreak;
-  }
-
-  prev.sessionId = sessionId;
-
-  localStorage.setItem("putt-strea", JSON.stringify(prev));
 }
 
 function ShotInterval(props) {
