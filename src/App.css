@@ -106,27 +106,12 @@ table{
   background-color: #000000;
 }
 
-.c1-button {
+.circle-button {
   box-shadow: none !important;
   background-color: #DC7726;
   outline: none !important;
   outline-offset: none !important;
 }
-
-.c2-button {
-  outline: none !important;
-  outline-offset: none !important;
-  box-shadow: none !important;
-  background-color: #DC7726;
-}
-
-.both-button {
-  outline: none !important;
-  outline-offset: none !important;
-  box-shadow: none !important;
-  background-color: #DC7726;
-}
-
 
 .btn-icon-add {
   color: green;

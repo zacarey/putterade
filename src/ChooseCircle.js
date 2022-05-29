@@ -18,16 +18,14 @@ function ChooseCircle(props) {
       <ButtonGroup onChange={props.onChange}>
         {radios.map((radio, idx) => (
           <ToggleButton
-            className={
-              idx === 0 ? "c1-button" : idx === 1 ? "c2-button" : "both-button"
-            }
+            className="circle-button"
             key={idx}
             id={`radio-${idx}`}
             type="radio"
             name="radio"
             style={{
               backgroundColor:
-                radioValue === radio.value ? "#57896A" : "#DC7726",
+                radioValue === radio.value ? "#0275d8" : "#4A545D",
             }}
             value={radio.value}
             checked={radioValue === radio.value}
