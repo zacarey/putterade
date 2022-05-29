@@ -53,27 +53,41 @@ function ShotInterval(props) {
   };
 
   return (
-    <Card className="shot-row-container">
-      <Card.Body className="shot">
-        <Button
-          variant="none"
-          disabled={history.length === 0}
-          onClick={popLastShot}
-        >
-          <i className="bi bi-arrow-counterclockwise"></i>&nbsp;
-        </Button>
-        <span className="row-text">
-          {history.filter((s) => !!s).length}/{history.length}
-        </span>
-        <Badge pill bg="primary" className="row-text">
-          <span>{distance + unit}</span>
-        </Badge>
-        <Button variant="outline-success" onClick={addMake}>
-          <i className="btn-icon-add bi bi-plus-circle-fill"></i>
-        </Button>
-        <Button variant="outline-danger" onClick={addMiss}>
-          <i className="btn-icon-minus bi bi-dash-circle-fill"></i>
-        </Button>
+    <Card>
+      <Card.Body>
+        <table>
+          <tbody>
+            <tr className="shot">
+              <td className="shot-item">
+                <Button
+                  variant="none"
+                  disabled={history.length === 0}
+                  onClick={popLastShot}
+                >
+                  <i className="bi bi-arrow-counterclockwise"></i>&nbsp;
+                </Button>
+              </td>
+              <td className="shot-item">
+                {history.filter((s) => !!s).length}/{history.length}
+              </td>
+              <td className="shot-item">
+                <span className="distance-circle">
+                  <span>{distance + unit}</span>
+                </span>
+              </td>
+              <td className="shot-item">
+                <Button variant="outline-success" onClick={addMake}>
+                  <i className="btn-icon-add bi bi-plus-circle-fill"></i>
+                </Button>
+              </td>
+              <td className="shot-item">
+                <Button variant="outline-danger" onClick={addMiss}>
+                  <i className="btn-icon-minus bi bi-dash-circle-fill"></i>
+                </Button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </Card.Body>
     </Card>
   );

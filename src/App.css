@@ -84,12 +84,17 @@ footer {
 
 .shot {
   display: flex;
-  justify-content: space-around;
 }
 
-.row-text {
+.shot-item {
+  flex:1;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+table{
+  width: 100%;
 }
 
 .btn:focus {
@@ -130,4 +135,21 @@ footer {
 
 .btn-icon-minus {
   color: red;
+}
+
+
+.distance-circle {
+  display: inline-block;
+  line-height: 0px;
+  border-radius: 50%;
+  border: 2px solid;
+  color: #0275d8;
+}
+
+.distance-circle span {
+  display: inline-block;
+  padding-top: 50%;
+  padding-bottom: 50%;
+  margin-left: 8px;
+  margin-right: 8px;
 }
