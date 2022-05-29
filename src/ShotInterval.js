@@ -76,13 +76,13 @@ function ShotInterval(props) {
                 </span>
               </td>
               <td className="shot-item">
-                <Button variant="outline-success" onClick={addMake}>
-                  <i className="btn-icon-add bi bi-plus-circle-fill"></i>
+                <Button variant="success" onClick={addMake}>
+                  <i className="bi bi-plus-circle-fill"></i>
                 </Button>
               </td>
               <td className="shot-item">
-                <Button variant="outline-danger" onClick={addMiss}>
-                  <i className="btn-icon-minus bi bi-dash-circle-fill"></i>
+                <Button variant="danger" onClick={addMiss}>
+                  <i className="bi bi-dash-circle-fill"></i>
                 </Button>
               </td>
             </tr>
