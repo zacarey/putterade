@@ -4,6 +4,7 @@ import React from "react";
 import Putterade from "./Putterade";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import StatTracker from "./StatTracker";
+import IntroDialog from "./IntroDialog";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
         </div>
       </header>
       <Putterade></Putterade>
-      <footer>Putterade 2022</footer>
+      <footer>
+        <IntroDialog /> | Putterade 2022
+      </footer>
     </div>
   );
 }
